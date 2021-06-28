@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./App.scss";
+import Navigation from "./components/navigation";
 import { autoLoginAction } from "./redux/actions/middleware-actions";
 import Routes from "./Routes";
 
@@ -12,7 +13,8 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App container-sm">
+    <div className="App">
+      <Navigation />
       <Routes />
     </div>
   );

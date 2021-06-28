@@ -1,0 +1,40 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
+  height: 60px;
+}
+
+.nav {
+  height: 60px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 36px;
+    margin: 0;
+  }
+
+  .nav__profile {
+    position: relative;
+    cursor: pointer;
+
+    img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+
+    &__dropdown {
+      position: absolute;
+      display: none;
+    }
+
+    &.active .nav__profile__dropdown {
+      display: block;
+    }
+  }
+}

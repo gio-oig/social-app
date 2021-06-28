@@ -1,0 +1,42 @@
+.home {
+  .home__section-one {
+    position: fixed;
+    top: 60px;
+    width: 300px;
+    bottom: 0;
+    overflow-y: auto;
+  }
+
+  .home__section-one::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .home__section-one::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .home__section-one::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+
+  .home__section-two {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding-top: 20px;
+    padding-left: 40px;
+    max-width: 700px;
+    height: 90vh;
+    margin-left: 300px;
+    margin-top: 60px;
+
+    // overflow-y: scroll;
+  }
+
+  .example-box {
+    margin-bottom: 10px;
+    height: 200px;
+    background-color: royalblue;
+  }
+}

@@ -1,0 +1,37 @@
+.mini-user-container {
+  margin: 5px 10px 10px 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mini-user-container:hover {
+  box-shadow: 0px 2px 20px rgba($color: #000000, $alpha: 0.2);
+}
+
+.img-container {
+  position: relative;
+  width: 55px;
+  min-width: 50px;
+  margin-right: 10px;
+  height: 50px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+
+.active-user-sign {
+  position: absolute;
+  right: 5px;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #0ff;
+}

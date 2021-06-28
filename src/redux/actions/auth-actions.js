@@ -15,3 +15,17 @@ export const logInUserAction = (userData) => async (dispatch) => {
     });
   }
 };
+
+export const isUserLoggedInAction = () => async (dispatch) => {
+  try {
+    dispatch({ type: types.AUTH_REQUEST });
+    const { data: user } = await userApi.isLoggedin();
+    dispatch({ type: types.AUTH_REQUEST_SUCCESS, payload: user });
+  } catch (error) {
+    localStorage.removeItem(AUTH_TOKEN);
+    dispatch({
+      type: types.AUTH_REQUEST_FAIL,
+      payload: error.response.data.error,
+    });
+  }
+};

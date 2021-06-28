@@ -23,7 +23,7 @@ const SignInForm = () => {
   };
 
   useEffect(() => {
-    if (user.user) {
+    if (user.user && localStorage.getItem(AUTH_TOKEN)) {
       location.replace(HOME_PATH);
     }
   }, [user, location]);
