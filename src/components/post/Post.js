@@ -18,6 +18,7 @@ import PostComments from "../postComments";
 
 const Post = ({ post }) => {
   const { likes, comments, author, content } = post;
+  const [postComment, setPostComment] = useState("");
 
   const [dropdownState, setDropdownState] = useState(false);
   const [showComments, setShowComments] = useState(false);
@@ -32,12 +33,23 @@ const Post = ({ post }) => {
     setShowComments(!showComments);
   };
 
+  const handleCommentChange = (e) => {
+    setPostComment(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    console.log(postComment);
+  };
+
+  const handleEnter = (e) => {
+    e.key === "Enter" && handleSubmit();
+  };
+
   const userImgPath = author.image
     ? `https://arcane-bayou-45011.herokuapp.com/uploads/images/${author.image}`
     : UnknownUser;
 
   const loggedInUsersPost = loggedInUserId === author.id;
-  // console.log(loggedInUsersPost);
 
   return (
     <div className="post">
@@ -76,7 +88,11 @@ const Post = ({ post }) => {
       <div className={classNames("comments", { active: showComments })}>
         <PostComments comments={comments} />
         <div className="create-comment-container">
-          <input placeholder="write a comment" />
+          <input
+            placeholder="write a comment"
+            onChange={(e) => handleCommentChange(e)}
+            onKeyDown={(e) => handleEnter(e)}
+          />
           <BiSend size={20} />
         </div>
       </div>

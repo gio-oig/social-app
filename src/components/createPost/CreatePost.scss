@@ -15,4 +15,14 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .create-post__icons {
+    position: relative;
+
+    .emoji-mart {
+      position: absolute;
+      top: 35px;
+      left: 10px;
+    }
+  }
 }

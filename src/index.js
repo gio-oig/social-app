@@ -7,16 +7,19 @@ import rootStore from "./redux/store";
 import App from "./App";
 import "./index.scss";
 import ErrorBoundary from "./components/errorBoundary";
+import ContextProvider from "./context/context";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={rootStore}>
-      <BrowserRouter>
-        <ErrorBoundary>
-          <App />
-        </ErrorBoundary>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <ContextProvider>
+    <React.StrictMode>
+      <Provider store={rootStore}>
+        <BrowserRouter>
+          <ErrorBoundary>
+            <App />
+          </ErrorBoundary>
+        </BrowserRouter>
+      </Provider>
+    </React.StrictMode>
+  </ContextProvider>,
   document.getElementById("root")
 );
