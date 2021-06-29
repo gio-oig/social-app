@@ -1,41 +1,20 @@
 import { withAuthProtected } from "../../hoc";
-import MiniUser from "../../components/mini-user/";
+import UsersSidebar from "../../components/usersSidebar";
 
 import CreatePost from "../../components/createPost";
 
 import "./Home.scss";
-import Post from "../../components/post";
+import UsersPosts from "../../components/usersPosts";
 
 const Home = () => {
   return (
     <div className="container home">
       <div className="home__section-one">
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
-        <MiniUser />
+        <UsersSidebar />
       </div>
       <div className="home__section-two">
         <CreatePost />
-        <Post />
+        <UsersPosts />
       </div>
     </div>
   );

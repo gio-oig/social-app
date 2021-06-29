@@ -23,9 +23,9 @@ const CreatePost = () => {
   };
   return (
     <div>
-      <div class="create-post">
+      <div className="create-post">
         <textarea
-          class="form-control"
+          className="form-control"
           placeholder="what's your maind"
           value={postMessage}
         ></textarea>

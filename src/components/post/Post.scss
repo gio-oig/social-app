@@ -21,8 +21,22 @@
       object-fit: cover;
     }
   }
+  .post__content {
+    flex: 1;
 
+    .post__content__reactions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      & > div {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
   .post__content__text {
+    margin: 5px 0 10px 0;
     word-wrap: break-word;
     white-space: normal;
     color: rgb(51, 51, 51);
