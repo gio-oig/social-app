@@ -4,6 +4,7 @@ header {
   width: 100%;
   box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.2);
   height: 60px;
+  z-index: 100;
 }
 
 .nav {
@@ -23,8 +24,8 @@ header {
     cursor: pointer;
 
     img {
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
     }
 

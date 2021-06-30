@@ -49,8 +49,12 @@
 
   .post__contol {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &__btn {
+      align-self: flex-end;
       cursor: pointer;
     }
 

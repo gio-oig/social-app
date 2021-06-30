@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
+import { useSelector } from "react-redux";
+import { userIdSelector } from "../../redux/selectors/index";
+
+import PostComments from "../postComments";
+import { postApi } from "../../services/post";
+import { Context } from "../../context/context";
 import UnknownUser from "../../assets/unknown.jpg";
 
 import { RiHeart3Fill, RiHeart3Line } from "react-icons/ri";
@@ -9,21 +15,20 @@ import { BiRepost } from "react-icons/bi";
 import { CgMenuLeft } from "react-icons/cg";
 import { BiSend } from "react-icons/bi";
 
-import Comment from "../comment";
-import { useSelector } from "react-redux";
-import { userIdSelector } from "../../redux/selectors/index";
-
 import "./Post.scss";
-import PostComments from "../postComments";
+import CreateComment from "../createComment";
+import { formatDate } from "../../utils/formatTime";
 
 const Post = ({ post }) => {
-  const { likes, comments, author, content } = post;
-  const [postComment, setPostComment] = useState("");
+  const { likes, comments, author, content, createdAt } = post;
 
   const [dropdownState, setDropdownState] = useState(false);
   const [showComments, setShowComments] = useState(false);
 
   const loggedInUserId = useSelector(userIdSelector);
+
+  const { setPosts } = useContext(Context);
+  const userId = useSelector(userIdSelector);
 
   const toggleDropdown = () => {
     setDropdownState(!dropdownState);
@@ -33,17 +38,33 @@ const Post = ({ post }) => {
     setShowComments(!showComments);
   };
 
-  const handleCommentChange = (e) => {
-    setPostComment(e.target.value);
+  const handlePostDelete = async () => {
+    const res = await postApi.delete(post.id);
+    if (res.status === 200) {
+      const { data } = await postApi.getAllPosts();
+      setPosts(data);
+    }
+    console.log(res);
   };
 
-  const handleSubmit = () => {
-    console.log(postComment);
+  const handleLike = async () => {
+    const resp = await postApi.like(userId, post.id);
+    if (resp.status === 200) {
+      const { data } = await postApi.getAllPosts();
+      setPosts(data);
+    }
   };
 
-  const handleEnter = (e) => {
-    e.key === "Enter" && handleSubmit();
+  const isLikedPost = () => {
+    return isLiked ? (
+      <RiHeart3Fill size={20} fill="red" onClick={handleLike} />
+    ) : (
+      <RiHeart3Line size={20} onClick={handleLike} />
+    );
   };
+
+  const isLiked = post.likes.includes(userId);
+  console.log(isLiked);
 
   const userImgPath = author.image
     ? `https://arcane-bayou-45011.herokuapp.com/uploads/images/${author.image}`
@@ -62,8 +83,7 @@ const Post = ({ post }) => {
           <div className="post__content__text">{content}</div>
           <div className="post__content__reactions">
             <div>
-              <RiHeart3Fill size={20} fill="red" />
-              {/* <RiHeart3Line size={20} /> */}
+              {isLikedPost()}
               {likes.length > 0 ? likes.length : ""}
             </div>
             <div>
@@ -81,18 +101,15 @@ const Post = ({ post }) => {
               active: dropdownState,
             })}
           >
-            {loggedInUsersPost && <li>delete</li>}
+            {loggedInUsersPost && <li onClick={handlePostDelete}>delete</li>}
           </ul>
+          {formatDate(post.createdAt)}
         </div>
       </div>
       <div className={classNames("comments", { active: showComments })}>
         <PostComments comments={comments} />
         <div className="create-comment-container">
-          <input
-            placeholder="write a comment"
-            onChange={(e) => handleCommentChange(e)}
-            onKeyDown={(e) => handleEnter(e)}
-          />
+          <CreateComment postId={post.id} />
           <BiSend size={20} />
         </div>
       </div>

@@ -1,15 +1,19 @@
-import { RiChatSmile3Fill } from "react-icons/ri";
-import { BiSend } from "react-icons/bi";
+import { Context } from "../../context/context";
+
+import { postApi } from "../../services/post";
 
 import { Picker } from "emoji-mart";
 
+import { useContext, useState } from "react";
+import { RiChatSmile3Fill } from "react-icons/ri";
+import { BiSend } from "react-icons/bi";
+
 import "emoji-mart/css/emoji-mart.css";
 import "./CreatePost.scss";
-import { useState } from "react";
-import { postApi } from "../../services/post";
 
 const CreatePost = () => {
   const [postMessage, setPostMessage] = useState("");
+  const { setPosts } = useContext(Context);
 
   const [emoji, setEmoji] = useState(false);
 
@@ -23,9 +27,16 @@ const CreatePost = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(postMessage);
+    if (!postMessage.length) return;
+
     const newPost = await postApi.create(postMessage);
-    console.log(newPost);
+
+    if (newPost.status === 200) {
+      setPosts((state) => {
+        return [newPost.data, ...state];
+      });
+      resetInput();
+    }
   };
 
   const handleEnter = (e) => {
