@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+
 import { logInUserAction } from "../../../redux/actions/auth-actions";
+
 import { AUTH_TOKEN } from "../../../utils/constants";
 import { HOME_PATH } from "../../../utils/routePath";
 
@@ -40,6 +42,7 @@ const SignInForm = () => {
           className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          defaultValue="giorgi@gmail.com"
           {...register("email", { required: true })}
         />
         {errors.email && <div className="danger">Please Enter Email</div>}
@@ -52,6 +55,7 @@ const SignInForm = () => {
           type="password"
           className="form-control"
           id="exampleInputPassword1"
+          defaultValue="giorgi"
           {...register("password", { required: true })}
         />
         {errors.password && <div className="danger">Please Enter Password</div>}

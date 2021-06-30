@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import UnknownUser from "../../assets/unknown.jpg";
+import { formatDate } from "../../utils/formatTime";
 
 import "./Comment.scss";
 
 const Comment = ({ comment }) => {
-  const { author, content, createdAt, post } = comment;
+  const { author, content, createdAt } = comment;
 
   const userImgPath = author.image
-    ? `https://arcane-bayou-45011.herokuapp.com/uploads/images/${author.image}`
+    ? `http://localhost:5000/uploads/images/${author.image}`
     : UnknownUser;
 
   return (
@@ -18,6 +19,9 @@ const Comment = ({ comment }) => {
       <div>
         <h3 className="comment__author-name">{author.name}</h3>
         <p className="comment__text">{content}</p>
+      </div>
+      <div className="comment__date">
+        <p>{formatDate(createdAt)}</p>
       </div>
     </div>
   );

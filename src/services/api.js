@@ -4,7 +4,7 @@ import { AUTH_TOKEN } from "../utils/constants";
 let Api = axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
-      ? "https://arcane-bayou-45011.herokuapp.com/api"
+      ? "https://react-social-back.herokuapp.com/api"
       : "http://localhost:5000/api",
 });
 

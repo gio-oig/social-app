@@ -29,3 +29,7 @@ export const isUserLoggedInAction = () => async (dispatch) => {
     });
   }
 };
+
+export const logOutAction = {
+  type: types.LOG_OUT_USER,
+};

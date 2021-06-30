@@ -67,7 +67,7 @@ const Post = ({ post }) => {
   console.log(isLiked);
 
   const userImgPath = author.image
-    ? `https://arcane-bayou-45011.herokuapp.com/uploads/images/${author.image}`
+    ? `http://localhost:5000/uploads/images/${author.image}`
     : UnknownUser;
 
   const loggedInUsersPost = loggedInUserId === author.id;

@@ -1,19 +1,23 @@
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 form {
-	padding: 10px !important;
-	margin-top: 20px !important;
-	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px !important;
+  margin-top: 20px !important;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .auth-layout {
-	max-width: 600px;
+  max-width: 600px;
 }
 
 .danger {
-	margin: 10px 0;
-	color: red;
+  margin: 10px 0;
+  color: red;
+}
+
+.emoji-mart {
+  z-index: 10000;
 }
