@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { BiSend } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { userIdSelector } from "../../redux/selectors";
 import { socket } from "../../services/socket";
@@ -37,12 +38,15 @@ const CreateComment = ({ postId }) => {
   };
 
   return (
-    <input
-      ref={messageInput}
-      placeholder="write a comment"
-      onChange={(e) => handleCommentChange(e)}
-      onKeyDown={(e) => handleEnter(e)}
-    />
+    <>
+      <input
+        ref={messageInput}
+        placeholder="write a comment"
+        onChange={(e) => handleCommentChange(e)}
+        onKeyDown={(e) => handleEnter(e)}
+      />
+      <BiSend size={20} onClick={handleSubmit} />
+    </>
   );
 };
 

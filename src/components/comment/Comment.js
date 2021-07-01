@@ -8,7 +8,7 @@ const Comment = ({ comment }) => {
   const { author, content, createdAt } = comment;
 
   const userImgPath = author.image
-    ? `http://localhost:5000/uploads/images/${author.image}`
+    ? `https://react-social-back.herokuapp.com/uploads/images/${author.image}`
     : UnknownUser;
 
   return (

@@ -56,7 +56,7 @@ const CreatePost = () => {
         <div className="create-post__icons">
           <RiChatSmile3Fill size={25} onClick={() => setEmoji(!emoji)} />
           {emoji && <Picker onSelect={(e) => addEmoji(e)} />}
-          <BiSend size={25} />
+          <BiSend size={25} onClick={handleSubmit} />
         </div>
       </div>
     </div>

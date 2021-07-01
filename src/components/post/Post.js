@@ -13,7 +13,6 @@ import UnknownUser from "../../assets/unknown.jpg";
 import { RiHeart3Fill, RiHeart3Line } from "react-icons/ri";
 import { BiRepost } from "react-icons/bi";
 import { CgMenuLeft } from "react-icons/cg";
-import { BiSend } from "react-icons/bi";
 
 import "./Post.scss";
 import CreateComment from "../createComment";
@@ -67,7 +66,7 @@ const Post = ({ post }) => {
   console.log(isLiked);
 
   const userImgPath = author.image
-    ? `http://localhost:5000/uploads/images/${author.image}`
+    ? `https://react-social-back.herokuapp.com/uploads/images/${author.image}`
     : UnknownUser;
 
   const loggedInUsersPost = loggedInUserId === author.id;
@@ -110,7 +109,6 @@ const Post = ({ post }) => {
         <PostComments comments={comments} />
         <div className="create-comment-container">
           <CreateComment postId={post.id} />
-          <BiSend size={20} />
         </div>
       </div>
     </div>

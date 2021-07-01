@@ -8,7 +8,7 @@ const MiniUser = ({ user, isActive }) => {
   console.log(user);
 
   const userImgPath = image
-    ? `http://localhost:5000/uploads/images/${image}`
+    ? `https://react-social-back.herokuapp.com/uploads/images/${image}`
     : UnknownUser;
 
   return (
