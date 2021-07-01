@@ -5,4 +5,4 @@ const ENDPOINT =
     ? "https://react-social-back.herokuapp.com"
     : "http://localhost:5000";
 
-export const socket = io(ENDPOINT);
+export const socket = io("https://react-social-back.herokuapp.com");

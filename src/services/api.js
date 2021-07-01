@@ -2,14 +2,17 @@ import axios from "axios";
 import { AUTH_TOKEN } from "../utils/constants";
 
 let Api = axios.create({
-  baseURL:
-    process.env.NODE_ENV === "production"
-      ? "https://react-social-back.herokuapp.com/api"
-      : "http://localhost:5000/api",
+  baseURL: "https://react-social-back.herokuapp.com/api",
 });
 
-// Access-Control-Allow-Credentials: true
-// axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
+// let Api = axios.create({
+//   baseURL:
+//     process.env.NODE_ENV === "production"
+//       ? "https://react-social-back.herokuapp.com/api"
+//       : "http://localhost:5000/api",
+// });
+
+// 'https://react-social-back.herokuapp.com'
 
 Api.defaults.withCredentials = true;
 Api.defaults.headers.common = {
